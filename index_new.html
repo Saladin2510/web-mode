@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesi 6</title>
+    <link rel="stylesheet" href="style _new.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="reRender()" id="home">HOME</a>
+            <a onclick="darkMode()" id="mode">MODE 1</a>
+            <a onclick="iceMode()" id="mode2">MODE 2</a>
+        </nav>
+        <h1>Sesi 6 Pembelajaran</h1>
+        <p id="info" class="info"></p>
+        <p id="info2" class="info"></p>
+    </div>
+
+    <script>
+        let body = document.body
+        let info = document.getElementById("info")
+        let mode = document.getElementById('mode')
+        let home = document.getElementById('home')
+        let mode2 = document.getElementById('mode2')
+
+        const darkLimit = 5;
+        let darkCounter = 0;
+        let darkRemainingLeft;
+
+        const iceLimit = 5;
+        let iceCounter = 0;
+        let iceRemainingLeft;
+
+        // darkMode
+
+        function darkMode() {
+            if (darkRemainingLeft == 0) {
+                console.log('jatah dark mode anda habis');
+                info.textContent = "👹 habis dark modenya bwang 👹";
+                mode.style.display = "none";
+                home.textContent = "RESTART"
+                return;
+            }
+
+            mode2.style.display = "none";
+
+            darkCounter += 1
+            darkRemainingLeft = darkLimit - darkCounter;
+
+            info.textContent = `Darkmode dipakai ${darkCounter}x, tersisa ${darkRemainingLeft}`
+
+
+
+            console.log('dark mode diklik sebanyak:', darkCounter);
+            console.log('kesempatan anda: ', darkRemainingLeft);
+
+            body.classList.toggle("dark");
+
+            //     if (mode.click) {
+            //     mode.textContent = "LIGHT";
+            //    } else {
+            //   mode.textContent = "DARK"
+            //    }
+        }
+
+        // darkMode end
+
+        // iceMode
+        function iceMode() {
+            if (iceRemainingLeft == 0) {
+                console.log('jatah ice mode anda habis');
+                info2.textContent = "🥶 bang dingin bang 🥶";
+                mode2.style.display = "none";
+                home.textContent = "RESTART"
+                return;
+            }
+
+            mode.style.display = "none";
+
+            iceCounter += 1
+            iceRemainingLeft = iceLimit - iceCounter;
+
+            info2.textContent = `icemode dipakai ${iceCounter}x, tersisa ${iceRemainingLeft}`
+
+
+
+            console.log('ice mode diklik sebanyak:', iceCounter);
+            console.log('kesempatan anda: ', iceRemainingLeft);
+
+            body.classList.toggle("ice");
+        }
+        // iceMode end
+
+        function reRender() {
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
